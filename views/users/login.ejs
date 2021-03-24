@@ -2,12 +2,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+            <!-- Image for card -->
             <div class="card shadow">
                 <img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
                     alt="" class="card-img-top" />
+                <!-- Login fields -->
                 <div class="card-body">
                     <h5 class="card-title">Login</h5>
+                    <!-- START LOGIN FORM -->
                     <form action="/login" method="POST" class="validated-form" novalidate>
+                        <!-- Username -->
                         <div class="mb-3">
                             <label class="form-label" for="username">Username</label>
                             <input class="form-control" type="text" name="username" id="username" autofocus required>
@@ -15,6 +19,7 @@
                                 <p>Looks good!</p>
                             </div>
                         </div>
+                        <!-- Password -->
                         <div class="mb-3">
                             <label class="form-label" for="password">Password</label>
                             <input class="form-control" type="password" name="password" id="password" required>
@@ -22,6 +27,7 @@
                                 <p>Looks good!</p>
                             </div>
                         </div>
+                        <!-- Login button -->
                         <div class="d-grid gap-2">
                             <button class="btn btn-success">Login</button>
                         </div>
