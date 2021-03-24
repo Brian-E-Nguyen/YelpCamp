@@ -4,8 +4,10 @@
     <div class="col-md-6 offset-md-3">
         <div class="card shadow">
             <div class="card-body">
+                <!-- START EDIT FORM -->
                 <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="post" novalidate
                     class="validated-form" enctype="multipart/form-data">
+                    <!-- Title -->
                     <div class="mb-3">
                         <label class="form-label" for="title">Title</label>
                         <input class="form-control" type="text" name="campground[title]" id="title"
@@ -14,6 +16,7 @@
                             <p>Looks good!</p>
                         </div>
                     </div>
+                    <!-- Location -->
                     <div class="mb-3">
                         <label class="form-label" for="location">Location</label>
                         <input class="form-control" type="text" name="campground[location]" id="location"
@@ -22,6 +25,7 @@
                             <p>Looks good!</p>
                         </div>
                     </div>
+                    <!-- Price -->
                     <div class="mb-3">
                         <label class="form-label" for="price">Campground Price</label>
                         <div class="input-group">
@@ -34,6 +38,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Description -->
                     <div class="mb-3">
                         <label class="form-label" for="description">Description</label>
                         <textarea class="form-control" type="text" name="campground[description]" id="description"
@@ -42,10 +47,12 @@
                             <p>Looks good!</p>
                         </div>
                     </div>
+                    <!-- Upload photos -->
                     <div class="mb-3 custom-file">
                         <label for="image" class="form-label custom-file-label">Choose image(s)</label>
                         <input class="form-control" type="file" id="formFile" name="image" multiple>
                     </div>
+                    <!-- Delete photos -->
                     <div class="mb-3">
                         <div class="col-6">
                             <% campground.images.forEach(function(img, i) { %>
@@ -58,6 +65,7 @@
                             <% }) %>
                         </div>
                     </div>
+                    <!-- Update button -->
                     <div class="mb-3">
                         <button class="btn btn-info text-white">Update Campground</button>
                     </div>

@@ -8,6 +8,7 @@
 
 <div class="row">
   <div class="col-6">
+    <!-- Image carousel if there are images uploaded to this campground -->
     <div id="campgroundCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <% campground.images.forEach((image, index) => { %>
@@ -15,6 +16,7 @@
           <img src="<%= image.url %> " class="d-block w-100" alt="...">
         </div>
         <% }); %>
+        <!-- Carousel controls to cycle through images -->
         <% if (campground.images.length > 1) { %>
         <button class="carousel-control-prev" type="button" data-bs-target="#campgroundCarousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -26,6 +28,7 @@
         </button>
         <% } %>
       </div>
+      <!-- Card contents displaying campground information -->
       <div class="card mb-3">
         <div class="card-body">
           <h5 class="card-title"><%= campground.title %></h5>
@@ -36,6 +39,8 @@
           <li class="list-group-item">Submitted by <%= campground.author.username %></li>
           <li class="list-group-item">$<%= campground.price %>/night</li>
         </ul>
+        <!-- Option to edit or delete camground if current user 
+        is the owner of the campground -->
         <% if (currentUser && campground.author.equals(currentUser._id)) { %>
         <div class="card-body">
           <a class="card-link btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
@@ -51,11 +56,16 @@
     </div>
   </div>
   <div class="col-6">
+
+    <!-- Minimap display for campground -->
     <div id='map'></div>
+
+    <!-- User Review -->
     <% if(currentUser) { %>
     <h2>Leave a Review</h2>
+    <!-- START FORM -->
     <form action="/campgrounds/<%=campground._id%>/reviews" class="mb-3 validated-form" method="POST" novalidate>
-
+      <!-- Star rating -->
       <div class="mb-3">
         <fieldset class="starability-basic">
           <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
@@ -72,6 +82,7 @@
           <label for="first-rate5" title="Amazing">5 stars</label>
         </fieldset>
       </div>
+      <!-- Review text -->
       <div class="mb-3">
         <label class="form-label" for="body">Review Text</label>
         <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
@@ -82,6 +93,7 @@
       <button class="btn btn-success">Submit</button>
     </form>
     <% } %>
+    <!-- Displaying reviews -->
     <% for( let review of campground.reviews ) { %>
     <div class="card mb-3">
       <div class="card-body">
@@ -91,6 +103,7 @@
         </p>
 
         <p class="card-text">Review: <%= review.body %> </p>
+        <!-- Option to delete review if current user owns review -->
         <% if (currentUser && review.author.equals(currentUser._id)) { %>
         <form action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="post">
           <button class="btn btn-sm btn-danger">

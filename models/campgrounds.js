@@ -7,6 +7,7 @@ const ImageSchema = new Schema({
     filename: String
 });
 
+// Images returned from Cloudinary with be downsized to a width of 200
 ImageSchema.virtual('thumbnail').get(function() {
     // 'this' refers to the current image
     return this.url.replace('/upload', '/upload/w_200')
@@ -43,6 +44,7 @@ const CampgroundSchema = new Schema({
     ],
 }, opts);
 
+// Popup modal for single campground on large map
 CampgroundSchema.virtual('properties.popUpMarkup').get(function() {
     // 'this' referes to the campground object
     return `<strong>
