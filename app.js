@@ -1,9 +1,6 @@
 if(process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
-// require('dotenv').config();
-
-console.log(process.env.SECRET)
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -28,6 +25,8 @@ const reviewRoutes = require('./routes/reviews');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp' ;
 
+
+// Mongo / Mongoose connection
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -41,6 +40,7 @@ db.once('open', () => {
     console.log('Database connected');
 });
 
+// Exporess configurations
 const app = express();
 
 app.engine('ejs', ejsMate);
@@ -101,7 +101,7 @@ const scriptSrcUrls = [
     "https://cdnjs.cloudflare.com/",
     "https://cdn.jsdelivr.net",
 ];
-//This is the array that needs added to
+
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
     "https://api.mapbox.com/",
@@ -117,6 +117,8 @@ const connectSrcUrls = [
     "https://events.mapbox.com/",
 ];
 const fontSrcUrls = [];
+
+// Helmet content security policy implementation
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
@@ -138,6 +140,7 @@ app.use(
     })
 );
 
+// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -152,11 +155,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/fakeUser', async(req, res) => {
-    const user = new User({email: 'b@gmail.com', username: 'brianNNNN'});
-    const newUser = await User.register(user, 'chicken');
-    res.send(newUser);
-});
+// Application routes
 
 app.use('/', usersRoutes);
 app.use('/campgrounds', campgroundRoutes);
