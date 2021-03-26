@@ -2,7 +2,11 @@
 
 ## What is YelpCamp?
 
-YelpCamp is a friendly application that allows users to view various camping places from all over the world.
+Looking for a place around the world to camp at? Inspired by *Yelp*, *YelpCamp* is a user-friendly application that allows users to create and view various camping places from all over the world and to write reviews on them
+
+This project originated from [Colt Steele's Web Development Bootcamp 2021 on Udemy](https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/22643915?start=0#questions). This repository showcases what I have learned from that course and my progress with this application: 
+
+- https://github.com/Brian-E-Nguyen/Web-Dev-Bootcamp-2020
 
 ## Features
 
@@ -36,5 +40,4 @@ YelpCamp is a friendly application that allows users to view various camping pla
 - [Mongoose](https://mongoosejs.com/) - schema-based modeling for application data
 - [Passport](http://www.passportjs.org/) - Express-compatible authentication middleware for Node.js
 - [Starability](https://github.com/LunarLogic/starability) - accessible rating forms with animations
-
 
