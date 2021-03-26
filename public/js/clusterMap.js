@@ -6,7 +6,6 @@ const map = new mapboxgl.Map({
     zoom: 3
 });
 
-console.log(campgrounds)
 
 var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'top-right');
